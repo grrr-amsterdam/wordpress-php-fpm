@@ -3,7 +3,13 @@ FROM php:7.1-fpm
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils vim curl debconf subversion git apt-transport-https \
     build-essential locales acl mailutils wget zip unzip \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
     gnupg gnupg1 gnupg2
+
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  \
+    && docker-php-ext-install -j$(nproc) gd
 
 RUN docker-php-ext-install mysqli
 
