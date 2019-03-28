@@ -6,6 +6,7 @@ RUN apt-get update \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
     libpng-dev \
+    less \
     gnupg gnupg1 gnupg2
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  \
