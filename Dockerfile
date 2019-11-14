@@ -1,5 +1,7 @@
 FROM php:7.1-fpm
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils vim curl debconf subversion git apt-transport-https \
     build-essential locales acl mailutils wget zip unzip \
