@@ -13,9 +13,7 @@ RUN apt-get update \
     dnsutils
 
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/  \
-    && docker-php-ext-install -j$(nproc) gd
-
-RUN docker-php-ext-install mysqli
+    && docker-php-ext-install -j$(nproc) gd mysqli pdo pdo_mysql
 
 COPY php.ini /etc/php/7.1.23/php.ini
 COPY php-fpm-pool.conf /etc/php/7.1.23/pool.d/www.conf
